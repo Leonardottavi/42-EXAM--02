@@ -1,11 +1,18 @@
 #include <stdlib.h>
 
+int ft_abs(int n)
+{
+	if (n < 0)
+		n = -n;
+	return(n);
+}
+
 int *ft_range(int start, int end)
 {
 	int i = 0;
-	int len = abs((end - start)) + 1;
+	int len = ft_abs((end - start)) + 1;
 	int *res = (int *)malloc(sizeof(int) * len);
-	
+
 	while (i < len)
 	{
 		if (start < end)
@@ -21,5 +28,5 @@ int *ft_range(int start, int end)
 			i++;
 		}
 	}
-        return (res);
+	return (res);
 }
