@@ -1,27 +1,48 @@
+#include <stdio.h>
 #include <stdlib.h>
 
-int *ft_rrange(int start, int end)
+int ft_abs( int n)
 {
-	int *range;
-	int i = 0;
-	int step = 1;
-	int n = end - start;
-
 	if (n < 0)
-		(n *= -1);
-	n++;
+		n = -n;
+	return (n);
+}
 
-	range = (int *)malloc(sizeof(int) * n);
-	if (range)
+int	*ft_rrange(int start, int end)
+{
+	int i = 0;
+	int *res;
+
+	res = (int *)malloc(sizeof(int) * ft_abs(end - start) + 1);
+
+	while (start < end )
 	{
-		if (start < end)
-			step = -1;
-		while (i < n)
-		{
-			range[i] = end;
-			end = end + step;
-			i++;
-		}
+		res[i] = end;
+		end--;
+		i++;
 	}
-	return (range);
+	res[i] = end;
+
+	while (start > end )
+	{
+		res[i] = end;
+		end++;
+		i++;
+	}
+	res[i] = end;
+	return (res);
+}
+
+
+int main()
+{
+	int *tab = ft_rrange(-1,3);
+	int len =5;
+	int i = 0;
+	while ( i < len)
+	{
+		printf("%d ", tab[i]);
+		i++;
+	}
+
 }
