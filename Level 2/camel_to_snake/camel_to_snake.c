@@ -1,21 +1,22 @@
 #include <unistd.h>
 
-int main(int argc, char **argv)
+void	mirror(char *s)
 {
-	int i = 0;
-
-	if (argc == 2)
+	while(*s)
 	{
-		while(argv[1][i])
-		{
-			if(argv[1][i] >= 65 && argv[1][i] <= 90)
-			{
-				argv[1][i] = argv[1][i] + 32;
-				write (1, "_", 1);
-			}
-			write(1, &argv[1][i], 1);
-			i++;
-		}
+		if(*s >= 'a' && *s <= 'z')
+			*s = 'z' - *s + 'a';
+		if(*s >= 'A' && *s <= 'Z')
+			*s = 'Z' - *s + 'A';
+		write(1, s++, 1);
 	}
-	write (1, "\n", 1);
+}
+
+int main( int ac, char **av)
+{
+	if ( ac == 2 )
+	{
+		mirror(av[1]);
+	}
+	write(1, "\n", 1);
 }

@@ -1,16 +1,29 @@
-char *ft_strrev(char *str)
+void	ft_swap(char *a, char *b)
 {
-	int i = -1;
-	int length = 0;
-	char temporary;
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
-	while (str[length])
-		length++;
-	while (++i < length / 2)
+int	ft_strlen(char *s)
+{
+	int i = 0;
+	while(s[i])
+		i++;
+	return(i);
+}
+
+char    *ft_strrev(char *str)
+{
+	int i = 0;
+	int j = ft_strlen(str) - 1;
+	int len = ft_strlen(str);
+
+	while(str[i] && (len / 2) > i)
 	{
-		temporary = str[i];
-		str[i] = str[length - 1 - i];
-		str[length - 1 - i] = temporary;
+		ft_swap(&str[i], &str[j]);
+		i++;
+		j--;
 	}
-	return (str);
+	return(str);
 }

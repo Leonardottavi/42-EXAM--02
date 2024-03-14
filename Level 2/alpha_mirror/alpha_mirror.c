@@ -6,10 +6,10 @@ int main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		while(argv[1][i]) 
+		while(argv[1][i])
 		{
 			if(argv[1][i] >= 65 && argv[1][i] <= 90)
-			{	
+			{
 				argv[1][i] = 90 - argv[1][i] + 65;
 			}
 			else if (argv[1][i] >= 97 && argv[1][i] <= 122)
@@ -21,4 +21,4 @@ int main(int argc, char **argv)
 		}
 	}
 	write (1,"\n",1);
-}		
+}

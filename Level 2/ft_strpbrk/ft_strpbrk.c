@@ -1,24 +1,33 @@
-#include <stdio.h>
-#include <string.h>
 
-char *ft_strpbrk(const char *s1, const char *s2)
+int	ft_char(const char c, const char *str)
 {
-	int i = 0;
-	
-	if (!s1 || !s2)
+	while (*str)
 	{
-		return (0);
-	}
-	while(*s1)
-	{
-		i = 0;
-	   	while(s2[i])
-		{
-			if(*s1 == s2[i])
-				return (char *) s1;
-			i++;
-		}
-		s1++;	
+		if (*str == c)
+			return (1);
+		str++;
 	}
 	return (0);
 }
+
+
+char	*ft_strpbrk(const char *s, const char *accept)
+{
+
+	while (*s)
+	{
+		if (ft_char(*s,accept) == 1)
+			return ((char *)s);
+		s++;
+	}
+	return (0);
+}
+
+#include <stdio.h>
+
+ int		main(void)
+ {
+ 	printf("ft: %s\n", ft_strpbrk("This is a string to search in", "ZZZ"));
+
+ 	printf("ft: %s\n", ft_strpbrk("This is a string to search in", "is"));
+ }
