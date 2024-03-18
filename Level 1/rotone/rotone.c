@@ -1,28 +1,27 @@
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	put_char(char c)
 {
 	write(1, &c, 1);
 }
 
 void	rotone(char *s)
 {
-	while (*s)
+	while(*s)
 	{
-		if ((*s >= 'A' && *s <= 'Y') || (*s >= 'a' && *s <= 'y'))
-			ft_putchar(*s + 1);
-		else if (*s == 'Z' || *s == 'z')
-			ft_putchar(*s - 25);
+		if((*s >= 'a' && *s <= 'y') || (*s >= 'A' && *s <= 'Y'))
+			put_char(*s + 1);
+		else if ( *s == 'z' || *s == 'Z')
+			put_char(*s - 25);
 		else
-			ft_putchar(*s);
-		++s;
+			put_char(*s);
+		s++;
 	}
 }
 
-int		main(int ac, char **av)
+int main(int ac, char **av)
 {
-	if (ac == 2)
+	if(ac == 2)
 		rotone(av[1]);
-	ft_putchar('\n');
-	return (0);
+	write(1, "\n", 1);
 }
