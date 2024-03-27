@@ -6,8 +6,7 @@ int	ft_atoi(char *str)
 
 	while (*str != '\0')
 	{
-		n = n * 10;
-		n = n + *str - '0';
+		n = n * 10 + *str - '0';
 		++str;
 	}
 	return (n);

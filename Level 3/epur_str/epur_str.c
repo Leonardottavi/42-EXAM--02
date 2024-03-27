@@ -1,29 +1,40 @@
 #include <unistd.h>
 
-int main(int argc, char const *argv[])
+int space(int c)
 {
-	int i;
-	int flg;
+	return(c <= 32);
+}
 
-	if (argc == 2)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	epur_str(char *str)
+{
+	int i = 0;
+	int flag = 0;
+
+	while(space(str[i]))
+		i++;
+	while(str[i])
 	{
-		i = 0;
-		while (argv[1][i] == ' ' || argv[1][i] == '\t')
-			i += 1;
-		while (argv[1][i])
+		if(space(str[i]))
+			flag = 1;
+		if(!space(str[i]))
 		{
-			if (argv[1][i] == ' ' || argv[1][i] == '\t')
-				flg = 1;
-			if (!(argv[1][i] == ' ' || argv[1][i] == '\t'))
-			{
-				if (flg)
-					write(1, " ", 1);
-				flg = 0;
-				write(1, &argv[1][i], 1);
-			}
-			i += 1;
+			if(flag)
+				ft_putchar(' ');
+			flag = 0;
+			ft_putchar(str[i]);
 		}
+		i++;
 	}
-	write(1, "\n", 1);
-	return (0);
+}
+
+int main(int ac, char **av)
+{
+	if(ac == 2)
+		epur_str(av[1]);
+	ft_putchar('\n');
 }
