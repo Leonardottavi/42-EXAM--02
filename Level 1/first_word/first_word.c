@@ -1,18 +1,25 @@
 #include <unistd.h>
 
-int main (int argc, char **argv)
+char	space(char c)
+{
+	return( c == ' ' || c == '\t');
+}
+
+void	first(char *str)
 {
 	int i = 0;
-	
-	if (argc == 2)
+	while(space(str[i]) && str[i] != '\0')
+		i++;
+	while(!space(str[i]) && str[i] != '\0')
 	{
-		while (argv[1][i] == 32 || argv[1][i] == 9)
-			i++;
-		while ((argv[1][i] != 32 && argv[1][i] != 9) && argv[1][i])
-		{
-			write(1, &argv[1][i], 1);
-			i++;
-		}
+		write(1, &str[i], 1);
+		i++;
 	}
+}
+
+int main(int ac, char **av)
+{
+	if(ac==2)
+		first(av[1]);
 	write(1, "\n", 1);
 }
